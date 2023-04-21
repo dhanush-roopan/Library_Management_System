@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://kit.fontawesome.com/e8fa2e31b4.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+            font-size: 18px;
+        }
+        body {
+            margin: 4vh;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sidebar {
+            width: 25%;
+            border: 1px solid #eee;
+            border-radius: 3px;
+            padding: 15px;
+            height: 92vh;
+            box-shadow: 0px 0px 3px gray;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .fa-circle {
+            color: orangered;
+        }
+        .searchBar {
+            width: 100%;
+            background-color: #eee;
+            border-radius: 3px;
+            padding: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        input {
+            border: none;
+            outline: none;
+            background: none;
+        }
+        .glass:hover {
+            color: orangered;
+            cursor: pointer;
+        }
+        .social-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .fa-brands {
+            font-size: 25px;
+            margin: 0 10px;
+            color: #333;
+            cursor: pointer;
+        }
+        .fa-brands:hover {
+            color: orangered;
+        }
+        .data {
+            width: 73%;
+            border-radius: 3px;
+            height: 92vh;
+            overflow-y: auto;
+        }
+        .top {
+            height: 60px;
+            border-radius: 3px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+        }
+        .header {
+            height: 200px;
+            border-radius: 3px;
+            background-color: #333;
+            margin: 3vh 0px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header p {
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+        }
+        #root {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+        .box {
+            margin: 1px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        .img-box {
+            width: 100%;
+            height: 176px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .images {
+            max-height: 90%;
+            max-width: 90%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .bottom {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 110px;
+        }
+        h2 {
+            font-size: 20px;
+            color: orangered;
+        }
+        
+    </style>
+    <link rel="stylesheet" href="searchengine.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidehead">
+                <div class="dots">
+                    <i class="fa-solid fa-circle"></i>
+                    <i class="fa-solid fa-circle" style="color: #333;"></i>
+                    <i class="fa-solid fa-circle"></i>
+                </div>
+                <hr style="margin: 15px 0; border: 1px solid #eee">
+            </div>
+            <div class="sidebody" style="height: 69vh;">
+                <div class="searchBar">
+                    <input placeholder="Search..." id="searchBar" name="searchBar" type="text">
+                    <i class="fa-solid fa-magnifying-glass glass" id="btn"></i>
+                </div>
+            </div>
+            <div class="sidefoot">
+                <hr style="margin: 15px 0; border: 1px solid #eee">
+                <div class="social-icons">
+                    <i class="fa-brands fa-square-facebook"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-square-github"></i>
+                </div>
+            </div>
+
+        </div>
+        <div class="data">
+            <div class="top">
+                <p>Home</p>
+                <p>
+                    <button type="submit">Membership</button>
+                </p>
+            </div>
+            <div class="header">
+                <p>E-LIBRARY</p>
+            </div>
+            <div class="body">
+                <div id="root"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const product = [
+            {
+                id: 0,
+                image: 'image/bbb.jpg',
+                title: 'Aesthetica',
+                category:'Fiction',
+                author:'Allie Rowbottom'
+            },
+            {
+                id: 1,
+                image: 'image/ddd.jpg',
+                title: 'Winterland',
+                category:'Romance',
+                author:'Rae Meadows'
+               
+            },
+            {
+                id: 2,
+                image: 'image/eee.jpg',
+                title: 'Roses, in the Mouth of a Lion ',
+                category:'Frienship',
+                author:'Bushra Rehman'
+            },
+            {
+                id: 3,
+                image: 'image/fff.jpg',
+                title: 'The Light Pirate',
+                category:'Science Fiction',
+                author:'Lilly Brooks-Dalton'
+            },
+            {
+                id: 4,
+                image: 'image/ccc.jpg',
+                title: 'The Light We Carry',
+                category:'Lifestyle',
+                author:'Michelle Obama'
+            },
+            {
+                id: 5,
+                image: 'image/a1.jpg',
+                title: 'Lord of Rings',
+                category:'Fantasy Fiction',
+                author:'JRR.Tolkien'
+            },
+            { 
+            id: 6,
+                image: 'image/a2.jpg',
+                title: 'The Catcher in the Rye',
+                category:'Adult Fiction',
+                author:'J.D.Salinger'
+            },
+            { 
+            id: 7,
+                image: 'image/a3.jpg',
+                title: 'The Lion,The Witcher and The Wardrobe',
+                category:'Fantasy',
+                author:'C.S.Lewis'
+            },
+            { 
+            id: 8,
+                image: 'image/a4.jpg',
+                title: 'Wuthering Heights',
+                category:'Romance',
+                author:'Emily Bronte'
+            },
+            { 
+            id: 9,
+                image: 'image/a5.jpg',
+                title: 'The Kite Runner',
+                category:'Drama',
+                author:'Khaled Hosseini'
+            },
+            { 
+            id: 10,
+                image: 'image/a6.jpg',
+                title: 'To Kill a Mockingbird',
+                category:'Thriller',
+                author:'Harper Lee'
+            },
+            { 
+            id: 11,
+                image: 'image/a7.jpg',
+                title: 'Slaughter House-five',
+                category:'Science fiction',
+                author:'Kurt Vonnegut'
+            },
+            { 
+            id: 12,
+                image: 'image/a8.jpg',
+                title: 'Jane Eyre',
+                category:'Romance',
+                author:'Charlotte Bronte'
+            },
+            { 
+            id: 13,
+                image: 'image/a9.jpg',
+                title: 'Frankenstein',
+                category:'Mystery Thriller',
+                author:'Mary Shelley'
+            },
+            { 
+            id: 14,
+                image: 'image/a10.jpg',
+                title: 'Of Mice and Men',
+                category:'Social Realism',
+                author:'John Steinbeck'
+            },
+            { 
+            id: 15,
+                image: 'image/a11.jpg',
+                title: 'The Great Gatsby',
+                category:'Fiction',
+                author:'F.Scott Fitzgerald'
+            },
+            { 
+            id: 16,
+                image: 'image/a12.jpg',
+                title: 'Rich dad poor dad',
+                category:'Finance',
+                author:'Robert T.kiyoski'
+            },
+            { 
+            id: 17,
+                image: 'image/a13.jpg',
+                title: 'The Hitchhikers Guide',
+                category:'Science Fiction Comedy',
+                author:'Douglas Adams'
+            },
+            { 
+            id: 18,
+                image: 'image/a14.jpg',
+                title: 'Think and grow Rich!',
+                category:'Personal Development',
+                author:'Napolean Hill'
+            },
+            { 
+            id: 19,
+                image: 'image/a15.jpg',
+                title: 'The Intelligent Investor',
+                category:'Investment and Economics',
+                author:'Benjamin Graham'
+            },
+            { 
+            id: 20,
+                image: 'image/a16.jpg',
+                title: 'Influence',
+                category:'Self help',
+                author:'Robert B.Cialdini'
+            },
+            { 
+            id: 21,
+                image: 'image/a17.jpg',
+                title: 'The long valley',
+                category:'Short Story',
+                author:'John Steinbeck'
+            },
+            { 
+            id: 22,
+                image: 'image/a18.jpg',
+                title: 'Fantastic Beasts',
+                category:'Fantasy',
+                author:'JK Rowling'
+            },
+            { 
+            id: 23,
+                image: 'image/a19.jpg',
+                title: 'The Devil',
+                category:'Thriller',
+                author:'Harper Lee'
+            },
+            { 
+            id: 24,
+                image: 'image/a20.jpg',
+                title: 'Crimes of Grindelwald',
+                category:'Fantasy',
+                author:'JK Rowling'
+            },
+           
+            
+        ];
+
+        const categories = [...new Set(product.map((item) => { return item }))]
+
+        document.getElementById('searchBar').addEventListener('keyup', (e) => {
+            const searchData = e.target.value.toLowerCase();
+            const filteredData = categories.filter((item) => {
+                return (
+                    item.title.toLowerCase().includes(searchData) || item.category.toLowerCase().includes(searchData) || item.author.toLowerCase().includes(searchData)
+                )
+            })
+            displayItem(filteredData)
+        });
+       
+        const displayItem = (items) => {
+            document.getElementById('root').innerHTML = items.map((item) => {
+                var { image, title, category,author} = item;
+                return (
+                    `<div class='box'>
+                        <div class='img-box'>
+                            <img class='images' src=${image}></img>
+                        </div> 
+                        <div class='bottom'>
+                            <p>${title}</p>
+                            <p>${category}</p>
+                            <p>${author}</p>
+                        </div>
+                    </div>`
+                )
+            }).join('')
+        };
+        displayItem(categories);
+
+    </script>
+</body>
+
+</html>
